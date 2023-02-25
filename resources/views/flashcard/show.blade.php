@@ -1,16 +1,12 @@
-@php
-	$today =  date('Y-m-d');
-@endphp
-
 <x-app-layout>
     <x-slot name="header">
 		<div class="flex justify-between">
 			<h2 class="flex items-center font-semibold text-xl text-gray-800">
-				作業一覧
+				{{$flashcard->name}}
 			</h2>
 
 			<div class=" rounded-lg p-3 w-2/4">
-				<form method="GET" action="{{route('flashcard.index')}}">
+				<form method="GET" action="{{route('word.index')}}">
 					<div class="flex">
 						<div class="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
 							<svg viewBox="0 0 20 20" aria-hidden="true" class="pointer-events-none absolute w-5 fill-gray-500 transition">
@@ -33,37 +29,26 @@
 					<thead class="bg-white border-b text-gray-900"">
 						<tr>
 							<th scope="col" class="text-sm font-medium px-6 py-4">
-								単語帳名
+								表
 							</th>
 							<th scope="col" class="text-sm font-medium px-6 py-4">
-								操作
+								裏
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($flashcards as $flashcard)
-							<tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100 bg-white  align="center">
-								<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
-									<a href="{{route('flashcard.show', $flashcard)}}">{{$flashcard->name}}</a>
-								</td>
-								<td align="center">
-									<div style="display:inline-flex">
-										<a href="{{route('flashcard.edit', $flashcard)}}">
-											<button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2">
-												修正
-											</button>
-										</a>
-										<form method="post" action="{{route('flashcard.destroy', $flashcard)}}">
-											@csrf
-											@method('delete')
-											<button class="bg-red-500 hover:bg-red-400 text-white rounded px-4 py-2" onClick="return confirm('本当に{{$flashcard->name}}を削除しますか？');">
-												削除
-											</button>
-										</form>
-									</div>
-								</td>
-							</tr>
-						@endforeach
+						@if (!is_null($words))
+							@foreach ($words as $word)
+								<tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100 bg-white  align="center">
+									<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
+										{{$word->a_side}}
+									</td>
+									<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
+										{{$word->b_side}}
+									</td>
+								</tr>
+							@endforeach
+						@endif
 					</tbody>
 				</table>
 			</div>

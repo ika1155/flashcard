@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flashcard;
+use App\Models\Word;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class FlashcardController extends Controller
 {
@@ -61,6 +65,11 @@ class FlashcardController extends Controller
     public function show(Flashcard $flashcard)
     {
         //
+		$words = Word::find($flashcard->id);
+		if (empty($words)){
+			return view('flashcard.show', compact('flashcard','words'))->with('message', '単語帳は空です。');
+		}
+		return view('flashcard.show', compact('flashcard','words'));
     }
 
     /**

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FlashcardController;
+use App\Http\Controllers\WordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\FlashcardController;
 */
 
 Route::resource('flashcard', FlashcardController::class);
+Route::resource('word', WordController::class);
 
 Route::get('/', function () {
     return view('welcome');
