@@ -65,9 +65,10 @@ class FlashcardController extends Controller
     public function show(Flashcard $flashcard)
     {
         //
-		$words = Word::find($flashcard->id);
-		if (empty($words)){
-			return view('flashcard.show', compact('flashcard','words'))->with('message', '単語帳は空です。');
+		$id = $flashcard->id;
+		$words = Word::where('flashcard_id', $id)->get();
+		if ($words->isEmpty()){
+			session()->flash('message', '単語帳は空です。');
 		}
 		return view('flashcard.show', compact('flashcard','words'));
     }
