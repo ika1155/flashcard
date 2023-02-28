@@ -13,9 +13,19 @@ class WordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // Flashcard.showからリダイレクトでflashcard_idを渡される
+
+		/* $flashcard_id = $request->flashcard_id;
+		$flashcard = Flashcard::find($flashcard_id);
+
+		$words = Word::where('flashcard_id', $flashcard_id)->get();
+		if ($words->isEmpty()){
+			session()->flash('message', '単語帳は空です。');
+		}
+
+		return view('flashcard.show', compact('flashcard','words')); */
     }
 
     /**
@@ -23,10 +33,10 @@ class WordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-		$flashcard = session()->get('flashcard');
+        // セッションでFlashcardを渡される場合 
+		$flashcard = session()->get('flashcard'); 
 		return view('word.create', compact('flashcard'));
     }
 

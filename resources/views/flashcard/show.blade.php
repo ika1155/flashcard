@@ -19,7 +19,7 @@
 				</form>
 			</div>
 		</div>
-		<a href="{{route('word.create', $flashcard)}}">
+		<a href="{{route('word.create',$flashcard)}}">
 			<button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2">
 				単語の追加
 			</button>

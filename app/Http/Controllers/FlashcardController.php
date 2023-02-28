@@ -64,7 +64,13 @@ class FlashcardController extends Controller
      */
     public function show(Flashcard $flashcard)
     {
-        //
+        // Word.indexにリダイレクトでflashcard_idを渡す場合
+		/* 
+		$flashcard_id = $flashcard->id;
+		return redirect()->route('word.index', ['flashcard_id'=>$flashcard_id]); 
+		*/
+		
+		// セッションで渡す場合 
 		$id = $flashcard->id;
 		$words = Word::where('flashcard_id', $id)->get();
 		if ($words->isEmpty()){
