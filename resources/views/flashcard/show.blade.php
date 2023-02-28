@@ -19,6 +19,11 @@
 				</form>
 			</div>
 		</div>
+		<a href="{{route('word.create', $flashcard)}}">
+			<button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2">
+				単語の追加
+			</button>
+		</a>
 		<x-message :message="session('message')" />
     </x-slot>
 	
@@ -37,18 +42,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						@if (!is_null($words))
-							@foreach ($words as $word)
-								<tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100 bg-white  align="center">
-									<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
-										{{$word->a_side}}
-									</td>
-									<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
-										{{$word->b_side}}
-									</td>
-								</tr>
-							@endforeach
-						@endif
+						@foreach ($words as $word)
+							<tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100 bg-white  align="center">
+								<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
+									{{$word->a_side}}
+								</td>
+								<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
+									{{$word->b_side}}
+								</td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>

@@ -70,6 +70,7 @@ class FlashcardController extends Controller
 		if ($words->isEmpty()){
 			session()->flash('message', '単語帳は空です。');
 		}
+		session()->put('flashcard', $flashcard);
 		return view('flashcard.show', compact('flashcard','words'));
     }
 

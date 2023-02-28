@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Word;
+use App\Models\Flashcard;
 use Illuminate\Http\Request;
 
 class WordController extends Controller
@@ -25,7 +26,8 @@ class WordController extends Controller
     public function create()
     {
         //
-		return view('word.create');
+		$flashcard = session()->get('flashcard');
+		return view('word.create', compact('flashcard'));
     }
 
     /**
