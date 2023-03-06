@@ -232,6 +232,8 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+		'a_side' => '表',
+		'b_side' => '裏'
     ],
 
 ];
