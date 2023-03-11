@@ -11,6 +11,7 @@
             <div class="mx-4 sm:p-8">
                 <form method="POST" action="{{route('word.store')}}">
 					@csrf
+					<input type="hidden" name="flashcard_id" value="{{$flashcard->id}}">
 					<div class="form-group mb-6">
 						<label for="a_side" class="form-label inline-block mb-2 text-gray-700">表</label>
 						<input type="text" class="form-control
@@ -68,6 +69,28 @@
 						ease-in-out">
 						登録
 					</button>
+					<a href="{{route('flashcard.show',$flashcard)}}">
+						<button type="button" class="
+							px-6 
+							py-2 
+							border-2
+							border-gray-800 
+							text-gray-800 
+							font-medium 
+							text-xs 
+							leading-tight 
+							uppercase 
+							rounded
+							hover:bg-black 
+							hover:bg-opacity-5 
+							focus:outline-none 
+							focus:ring-0 
+							transition 
+							duration-150 
+							ease-in-out">
+							戻る
+						</button>
+					</a>
                 </form>
             </div>
         </div>
