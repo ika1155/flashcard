@@ -51,15 +51,17 @@ class WordController extends Controller
         //
 		$inputs = $request->validate([
 			'a_side'=>'required|max:100',
-			'b_side'=>'required|max:100'
+			'b_side'=>'required|max:100',
+			'flashcard_id'=>'required|exists:flashcards,id,deleted_at,NULL'
 		]);
 
 		$word = new Word();
 
 		$word->a_side = $request->a_side;
 		$word->b_side = $request->b_side;
-		// flashcard_id
-		$word->save;
+		$word->flashcard_id = $request->flashcard_id;
+		$word->save();
+		
 		return redirect()->route('word.create')->with('message','単語を追加しました。');
 	}
 
@@ -72,6 +74,7 @@ class WordController extends Controller
     public function show(Word $word)
     {
         //
+
     }
 
     /**
