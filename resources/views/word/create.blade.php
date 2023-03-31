@@ -9,7 +9,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mx-4 sm:p-8">
-                <form method="POST" action="{{route('word.store')}}">
+                <form method="POST" action="{{route('flashcard.word.store', $flashcard)}}">
 					@csrf
 					<input type="hidden" name="flashcard_id" value="{{$flashcard->id}}">
 					<div class="form-group mb-6">

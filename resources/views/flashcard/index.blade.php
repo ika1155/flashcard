@@ -44,7 +44,7 @@
 						@foreach ($flashcards as $flashcard)
 							<tr class="border-b transition duration-300 ease-in-out hover:bg-gray-100 bg-white  align="center">
 								<td class="text-sm px-6 py-4 whitespace-nowrap" align="left">
-									<a href="{{route('flashcard.show', $flashcard)}}">{{$flashcard->name}}</a>
+									<a href="{{route('flashcard.show', $flashcard->id)}}">{{$flashcard->name}}</a>
 								</td>
 								<td align="center">
 									<div style="display:inline-flex">

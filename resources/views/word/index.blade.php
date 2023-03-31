@@ -1,24 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-		<div class="flex justify-between">
-			<h2 class="flex items-center font-semibold text-xl text-gray-800">
-				{{$flashcard->name}}
-			</h2>
-		</div>
-		<a href="{{route('flashcard.word.create', $flashcard)}}">
-			<button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2">
-				単語の追加
-			</button>
-		</a>
-		<a href="{{route('flashcard.word.index', $flashcard)}}">
-			<button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2">
-				表示
-			</button>
-		</a> 
-		<x-message :message="session('message')" />
-    </x-slot>
-	
-	<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col shadow">		
 			<div class="overflow-hidden">
 				<table class="min-w-full">
@@ -48,4 +29,5 @@
 			</div>
 		</div>
 	</div>
+			
 </x-app-layout>
