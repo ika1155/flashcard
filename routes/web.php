@@ -18,7 +18,7 @@ use App\Http\Controllers\WordController;
 */
 
 Route::resource('flashcard', FlashcardController::class);
-Route::resource('word', WordController::class);
+Route::resource('flashcard.word', WordController::class);
 
 Route::get('/', function () {
     return view('welcome');
